@@ -47,7 +47,7 @@ module systolic_array_NxN #(
 				.b_out(b_wire[i][j]), 
 				.acc(acc_wire[i][j])
 		);
-		assign acc_out[(i*N+j)*Accw+: Accw] = acc_wire[i][j];
+		assign acc_out[(i*N+j)*Accw+: Accw] = acc_wire[N-1-i][N-j-1];
 		
 			end
 		end
