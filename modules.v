@@ -7,13 +7,14 @@ module ReLU #(
 	input wire signed [N*N*Accw-1:0] ReLU_in,
 	output wire signed [N*N*Accw-1:0] ReLU_out
 	);
-
+	genvar i;
 	generate
-		for (i = 0; i<N; i=i+1) begin:row
+		for (i = 0; i<N*N; i=i+1) begin:row
 
-				assign  ReLU_out[(i)*Accw+: Accw] = ReLU_in[(i)*Accw+: Accw]>0  ? ReLU_in[(i*Accw+: Accw] : 0;
+			assign  ReLU_out[i*Accw+: Accw] = 
+					ReLU_in[i*Accw+: Accw]>0 
+				       	? ReLU_in[i*Accw+: Accw] : 0;
 			end
-		end
 	endgenerate
 endmodule
 
